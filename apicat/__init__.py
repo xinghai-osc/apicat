@@ -1,5 +1,7 @@
 from flask import Flask, render_template_string
-from . import core
+from . import core,config
+import xhlog as log
+
 app = Flask("ApiCat")
 
 @app.route('/')
@@ -16,5 +18,8 @@ def docs():
     return render_template_string(combined_html)
 
 def start(plugin_list: list):
+    log.info("欢迎使用 ApiCat🎉")
+    log.info("开发团队: 星海码队")
+    log.info("项目地址: https://github.com/xinghai-osc/apicat")
     core.register_plugins(plugin_list,app)
-    app.run()
+    app.run(port=config.get_port(),host=config.get_host())
