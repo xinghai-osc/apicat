@@ -12,9 +12,9 @@ def docs():
             blueprint = app.blueprints[blueprint_name]
             plugin_docs[blueprint_name] = blueprint.get('docs', '')
     
-    combined_html = ''
+    combined_html = '<h1>欢迎使用 ApiCat 🎉</h1>'
     for plugin_name, docs_content in plugin_docs.items():
-        combined_html += f'<h1>欢迎使用 ApiCat 🎉</h1><div>{plugin_name}\n{docs_content}</div>'
+        combined_html += f'<div>{plugin_name}\n{docs_content}</div>'
     return render_template_string(combined_html)
 
 def start(plugin_list: list):
