@@ -14,7 +14,7 @@ def docs():
     
     combined_html = ''
     for plugin_name, docs_content in plugin_docs.items():
-        combined_html += f'<h1>API {plugin_name}</h1><div>{docs_content}</div>'
+        combined_html += f'<h1>欢迎使用 ApiCat 🎉</h1><div>{plugin_name}\n{docs_content}</div>'
     return render_template_string(combined_html)
 
 def start(plugin_list: list):
