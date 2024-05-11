@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "apicat"
-version = "0.0.4"
+version = "0.0.5"
 description = "ApiCat 是一个API框架，它能帮助站长快速部署各种API。"
 authors = ["Yeying-Xingchen <yeyingxingchen@yeah.net>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.12"
+python = ">=3.6"
 flask = ">=2.3.2"
 toml = ">=0.10.2"
 xhlog = ">=0.0.1"
