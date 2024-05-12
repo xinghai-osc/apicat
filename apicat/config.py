@@ -19,6 +19,12 @@ def get_website_name():
     else:
         return toml.load(path)['website']['name']
     
+def get_website_url():
+    if toml.load(path)['website']['url'] == None:
+        return "0.0.0.0"
+    else:
+        return toml.load(path)['website']['url']
+    
 def get_plugin_cfg(name,type,default=None):
     if toml.load(path)[name][type] == None:
         return default
