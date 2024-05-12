@@ -1,32 +1,43 @@
 import toml
 
 path = "config.toml"
+
 def get_port():
-    if toml.load(path)['website']['port'] == None:
+    """获取端口，若不存在则返回80"""
+    try:
+        config = toml.load(path)
+        return config['website']['port']
+    except KeyError:
         return 80
-    else:
-        return toml.load(path)['website']['port']
-    
+
 def get_host():
-    if toml.load(path)['website']['host'] == None:
+    """获取主机地址，若不存在则返回'0.0.0.0'"""
+    try:
+        config = toml.load(path)
+        return config['website']['host']
+    except KeyError:
         return "0.0.0.0"
-    else:
-        return toml.load(path)['website']['host']
-    
+
 def get_website_name():
-    if toml.load(path)['website']['name'] == None:
+    """获取网站名称，若不存在则返回'ApiCat'"""
+    try:
+        config = toml.load(path)
+        return config['website']['name']
+    except KeyError:
         return "ApiCat"
-    else:
-        return toml.load(path)['website']['name']
-    
+
 def get_website_url():
-    if toml.load(path)['website']['url'] == None:
+    """获取网站URL，若不存在则返回'0.0.0.0'"""
+    try:
+        config = toml.load(path)
+        return config['website']['url']
+    except KeyError:
         return "0.0.0.0"
-    else:
-        return toml.load(path)['website']['url']
-    
-def get_plugin_cfg(name,type,default=None):
-    if toml.load(path)[name][type] == None:
+
+def get_plugin_cfg(name, type, default=None):
+    """获取插件配置，若不存在则返回默认值"""
+    try:
+        config = toml.load(path)
+        return config[name][type]
+    except KeyError:
         return default
-    else:
-        return toml.load(path)[name][type]
