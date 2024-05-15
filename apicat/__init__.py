@@ -105,8 +105,16 @@ def docs():
     return render_template_string(combined_html)
 
 def start(plugin_list: list):
+    """
+    ApiCat-接口猫 程序运行
+    参数：
+    plugin_names:插件列表
+    返回：无
+    """
     log.info("欢迎使用 ApiCat🎉")
     log.info("开发团队: 星海码队")
     log.info("项目地址: https://github.com/xinghai-osc/apicat")
     core.register_plugins(plugin_list, app)
+    if config.get_website_name() == "ApiCat":
+        log.warning(f"网站名称未设置！默认为 ApiCat，请前往配置文件修改。")
     app.run(port=config.get_port(), host=config.get_host())

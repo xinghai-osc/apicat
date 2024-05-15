@@ -1,6 +1,13 @@
 import importlib
 from flask import Flask
 def register_plugins(plugin_names,app):
+    """
+    ApiCat-接口猫 插件注册
+    参数：
+    plugin_names:插件名列表
+    app:flask实例
+    返回：无
+    """
     for plugin_name in plugin_names:
         try:
             plugin_module = importlib.import_module(str(plugin_name))
