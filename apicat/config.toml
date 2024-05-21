@@ -1,8 +1,0 @@
-[website]
-name = "星海接口-XinghaiApi"
-port = 80
-host = "0.0.0.0"
-url = "https://xinghaiapi.pythonanywhere.com"
-
-[poetry_moment]
-directory = "poetry_moment"
