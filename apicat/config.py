@@ -1,7 +1,6 @@
 import toml,os
 
-current_folder = os.getcwd()
-path = current_folder + "\\config.toml"
+path = os.getcwd() + "\\config.toml"
 
 def get_port():
     """获取端口，若不存在则返回80"""

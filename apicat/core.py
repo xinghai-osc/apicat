@@ -12,10 +12,7 @@ def register_plugins(app: Flask):
     
     with open('plugins.yaml', encoding="utf-8") as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
-    def get_plugin_list(d:dict):
-        return [item for sublist in [get_plugin_list(v) if isinstance(v, dict) else [v] for k, v in d.items()] for item in sublist]
-
-    plugin_list = get_plugin_list(data)
+    plugin_list = list(data.keys())
     for plugin_name in plugin_list:
         try:
             plugin_module = importlib.import_module(str(plugin_name))

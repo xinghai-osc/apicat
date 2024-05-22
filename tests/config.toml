@@ -1,0 +1,6 @@
+[website]
+name = "ApiCat"
+port = 80
+host = "0.0.0.0"
+url = "http://localhost"
+        
