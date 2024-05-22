@@ -1,5 +1,6 @@
 import importlib
 import yaml
+import xhlog as log
 from flask import Flask
 def register_plugins(app: Flask):
     """
@@ -23,6 +24,6 @@ def register_plugins(app: Flask):
                 blueprint.name = plugin_name
                 app.register_blueprint(blueprint)
             else:
-                print(f"{plugin_name} 不是一个有效的apicat插件。")
+                log.warning(f"{plugin_name} 不是一个有效的apicat插件。")
         except ImportError:
-            print(f"找不到插件 {plugin_name}。")
+            log.error(f"找不到插件 {plugin_name}。")

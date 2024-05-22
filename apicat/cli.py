@@ -1,9 +1,21 @@
 import sys
 import subprocess
 
-def cli():
+def index():
+    if sys.argv[1] == "help":
+        help = R"""
+        ApiCat-接口猫
+        使用：
+        apicat [命令]
+        
+        命令：
+        help    显示帮助信息
+        init    初始化项目
+        start   启动项目
+        """
+        print(help)
     if sys.argv[1] == "init":
-        init(sys.argv[2:])
+        init()
     elif sys.argv[1] == "start":
         start()
 
@@ -32,4 +44,4 @@ def start():
     subprocess.call("__init__.py", shell=True)
 
 if __name__ == '__main__':
-    cli()
+    index()
