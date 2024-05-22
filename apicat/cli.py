@@ -1,41 +1,35 @@
-import argparse,os,shutil
+import sys
+import subprocess
 
 def cli():
-    parser = argparse.ArgumentParser(description='APICAT CLI')
-    subparsers = parser.add_subparsers(metavar='CLI命令')
+    if sys.argv[1] == "init":
+        init(sys.argv[2:])
+    elif sys.argv[1] == "start":
+        start()
 
-    # 添加子命令，演示没有参数
-    one_parser = subparsers.add_parser('init', help='初始化API')
-    one_parser.set_defaults(handle=init)
-
-    # 添加子命令，演示有参数
-    two_parser = subparsers.add_parser('start', help='启动API')
-    two_parser.set_defaults(handle=start)
-
-    # 解析命令
-    args = parser.parse_args()
-    # 1.第一个命令会解析成handle，使用args.handle()就能够调用
-    if hasattr(args, 'handle'):
-        # 1.1.其他参数会被解析成args的属性，以命令全称为属性名
-        args.handle(args)
-    # 2.如果没有handle属性，则表示未输入子命令
-    else:
-        parser.print_help()
-
-def init(args):
-    """初始化API"""
-    current_folder = os.getcwd()
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    config_local = current_dir + "\\config.toml"
-    config = current_folder + "\\config.toml"
-    plugin = current_folder + "\\plugin"
-    if not os.path.exists(config):
-        shutil.copyfile(config_local, config)
-    if not os.path.exists(plugin):
-        os.makedirs(plugin)
-    
-def start(args):
+def init():
+    with open("__init__.py","w") as f:
+        run_code = R"""from apicat import app
+    log.info("欢迎使用 ApiCat🎉")
+    log.info("开发团队: 星海码队")
+    log.info("项目地址: https://github.com/xinghai-osc/apicat")
+    core.register_plugins(app)
+    if config.get_website_name() == "ApiCat":
+        log.warning(f"网站名称未设置！默认为 ApiCat，请前往配置文件修改。")
+    app.run(port=config.get_port(), host=config.get_host())
+        """
+        f.write(run_code)
+    with open("config.toml","w") as f:
+        default_config = R"""[website]
+name = "ApiCat"
+port = 80
+host = "0.0.0.0"
+url = "http://localhost"
+        """
+        f.write(default_config)
+def start():
     """启动API"""
-    
+    subprocess.call("__init__.py", shell=True)
+
 if __name__ == '__main__':
     cli()

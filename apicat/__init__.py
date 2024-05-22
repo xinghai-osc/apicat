@@ -103,4 +103,3 @@ def docs():
         </html>
         """
     return render_template_string(combined_html)
-
