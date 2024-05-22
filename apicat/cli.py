@@ -2,22 +2,23 @@ import sys
 import subprocess
 
 def index():
-    if sys.argv[1] == "help":
-        help = R"""
-        ApiCat-接口猫
-        使用：
-        apicat [命令]
+    help = R"""ApiCat-接口猫
+使用：
+apicat [命令]
         
-        命令：
-        help    显示帮助信息
-        init    初始化项目
-        start   启动项目
-        """
+命令：
+help    显示帮助信息
+init    初始化项目
+start   启动项目"""
+    try:
+        if sys.argv[1] == "help":
+            print(help)
+        if sys.argv[1] == "init":
+            init()
+        elif sys.argv[1] == "start":
+            start()
+    except IndexError:
         print(help)
-    if sys.argv[1] == "init":
-        init()
-    elif sys.argv[1] == "start":
-        start()
 
 def init():
     with open("__init__.py","w") as f:

@@ -11,6 +11,9 @@ flask = ">=2.3.2"
 toml = ">=0.10.2"
 xhlog = ">=0.0.1"
 
+[tool.poetry.scripts]
+apicat = "apicat.cli:index"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
