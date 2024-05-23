@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "apicat"
-version = "0.0.7"
+version = "0.0.8"
 description = "ApiCat 是一个API框架，它能帮助站长快速部署各种API。"
 authors = ["Yeying-Xingchen <yeyingxingchen@yeah.net>"]
 readme = "README.md"
@@ -9,7 +9,7 @@ readme = "README.md"
 python = ">=3.6"
 flask = ">=2.3.2"
 toml = ">=0.10.2"
-yaml = ">=0.1.7"
+pyyaml = ">=6.0.5"
 xhlog = ">=0.0.1"
 
 [tool.poetry.scripts]
