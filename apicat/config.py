@@ -1,7 +1,7 @@
 import toml
 import yaml
 import os
-
+import xhlog as log
 path = os.getcwd() + "\\config.toml"
 
 def get_port():
@@ -24,7 +24,9 @@ def get_website_name():
     """获取网站名称，若不存在则返回'ApiCat'"""
     try:
         config = toml.load(path)
-        return config['website']['name']
+        if config['website']['url'] == "ApiCat":
+            log.warning(f"网站名称未设置！默认为 ApiCat，请前往配置文件修改。")
+        return config['website']['url']
     except KeyError:
         return "ApiCat"
 
