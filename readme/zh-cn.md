@@ -1,4 +1,4 @@
-<p align="right"><a herf="">简体中文</a>丨<a herf="en-us.md">English</a></p>
+<p align="right"><a href="">简体中文</a>丨<a href="en-us.md">English</a></p>
 <center>
 <h1>ApiCat-接口猫</h1>
 </center>
