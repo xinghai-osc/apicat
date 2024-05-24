@@ -3,7 +3,7 @@ name = "apicat"
 version = "0.0.8"
 description = "ApiCat 是一个API框架，它能帮助站长快速部署各种API。"
 authors = ["Yeying-Xingchen <yeyingxingchen@yeah.net>"]
-readme = "README.md"
+readme = "readme/zh-cn.md"
 
 [tool.poetry.dependencies]
 python = ">=3.6"
