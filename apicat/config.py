@@ -31,12 +31,12 @@ def get_website_name():
         return "ApiCat"
 
 def get_website_url():
-    """获取网站URL，若不存在则返回'0.0.0.0'"""
+    """获取网站URL，若不存在则返回'http://localhost'"""
     try:
         config = toml.load(path)
         return config['website']['url']
     except KeyError:
-        return "0.0.0.0"
+        return "http://localhost"
 
 def get_plugin_cfg(name, type, default=None):
     """获取插件配置，若不存在则返回默认值"""
