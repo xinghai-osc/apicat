@@ -40,7 +40,7 @@ def get_website_url():
 
 def get_plugin_cfg(name, type, default=None):
     """获取插件配置，若不存在则返回默认值"""
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(os.getcwd() + "\\plugins.yaml", 'r', encoding='utf-8') as f:
         result = yaml.load(f.read(), Loader=yaml.FullLoader)
         return_message =  result[name][type]
     if return_message == None:
