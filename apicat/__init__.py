@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from starlette.responses import RedirectResponse
 import importlib
 from apicat import config
 app = FastAPI()
@@ -23,12 +24,6 @@ for plugin_name in plugin_list:
 
 @app.get("/")
 def root_path():
-    return_message = {
-        "code": 200,
-        "message": "successes",
-        "plugin": "apicat_home",
-        "info": {
-            "message": "Welcome"
-        }
-    }
-    return return_message
+    url = app.url_path_for("docs")
+    resp = RedirectResponse(url=url)
+    return resp
